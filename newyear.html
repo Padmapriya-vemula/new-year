@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Something Special for Kannaya ❤️</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Georgia','Times New Roman',serif;height:100vh;overflow:hidden;background:linear-gradient(-45deg,#ffd6e0,#ffb5a7,#f9c5d1,#ffe5ec);background-size:400% 400%;animation:gradientShift 15s ease infinite;}
+@keyframes gradientShift{0%{background-position:0% 50%;}50%{background-position:100% 50%;}100%{background-position:0% 50%;}}
+.slider-container{width:100%;height:100vh;overflow:hidden;position:relative;}
+.slides-wrapper{display:flex;width:500%;height:100%;transition:transform 0.8s ease;}
+.slide{width:20%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;}
+.glass-card{background:rgba(255,255,255,0.25);backdrop-filter:blur(20px);border-radius:24px;border:1px solid rgba(255,255,255,0.4);padding:30px;max-width:400px;width:90%;text-align:center;box-shadow:0 8px 32px rgba(255,90,126,0.2);}
+.slide-title{font-size:clamp(1.5rem,5vw,2.5rem);color:#ff5a7e;margin-bottom:20px;text-shadow:2px 2px 4px rgba(255,255,255,0.5);}
+.card-text{font-size:clamp(1rem,3vw,1.2rem);color:#4a3040;line-height:1.8;white-space:pre-line;}
+.letter-text{font-style:italic;text-align:left;font-size:clamp(0.9rem,2.5vw,1.1rem);}
+.nav-btn{margin-top:25px;padding:15px 35px;font-size:1.1rem;border:none;border-radius:50px;background:linear-gradient(135deg,#ff85a2,#ff5a7e);color:#fff;cursor:pointer;transition:all 0.3s ease;box-shadow:0 4px 15px rgba(255,90,126,0.4);}
+.nav-btn:hover:not(:disabled){transform:scale(1.05);box-shadow:0 6px 25px rgba(255,90,126,0.6);}
+.nav-btn:disabled{opacity:0.6;cursor:not-allowed;}
+.tom-jerry-img{width:150px;height:150px;border-radius:50%;object-fit:cover;border:4px solid #fff;box-shadow:0 4px 20px rgba(255,90,126,0.3);margin-bottom:20px;}
+.hearts-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;overflow:hidden;z-index:100;}
+.floating-heart{position:absolute;font-size:1.5rem;animation:floatUp 4s ease-out forwards;opacity:0;}
+@keyframes floatUp{0%{opacity:1;transform:translateY(100vh) rotate(0deg);}100%{opacity:0;transform:translateY(-100px) rotate(360deg);}}
+.fireworks-container{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1000;}
+.spark{position:absolute;width:4px;height:4px;border-radius:50%;animation:sparkle 1.5s ease-out forwards;}
+@keyframes sparkle{0%{opacity:1;transform:translate(0,0) scale(1);}100%{opacity:0;transform:var(--spark-end) scale(0);}}
+.big-title{font-size:clamp(2rem,7vw,4rem);color:#ff5a7e;text-shadow:3px 3px 6px rgba(255,255,255,0.5);animation:titleGlow 2s ease-in-out infinite alternate;}
+@keyframes titleGlow{0%{text-shadow:3px 3px 6px rgba(255,255,255,0.5);}100%{text-shadow:0 0 30px rgba(255,90,126,0.8),3px 3px 6px rgba(255,255,255,0.5);}}
+.countdown-container{display:flex;gap:10px;justify-content:center;margin:15px 0;}
+.time-box{background:rgba(255,255,255,0.25);backdrop-filter:blur(10px);border-radius:12px;padding:10px 15px;min-width:60px;text-align:center;border:1px solid rgba(255,255,255,0.4);}
+.time-value{font-size:1.5rem;font-weight:bold;color:#ff5a7e;}
+.time-label{font-size:0.8rem;color:#4a3040;text-transform:uppercase;letter-spacing:1px;}
+.envelope-container{position:relative;width:120px;height:80px;margin:20px auto;cursor:pointer;}
+.envelope{width:100%;height:100%;background:linear-gradient(135deg,#ffd6e0,#f9c5d1);border-radius:5px;position:relative;}
+.envelope::before{content:'';position:absolute;top:0;left:0;right:0;height:0;border-left:60px solid transparent;border-right:60px solid transparent;border-top:50px solid #ff85a2;transition:all 0.5s ease;}
+.envelope.open::before{transform:rotateX(180deg);transform-origin:top;}
+.envelope-heart{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2rem;opacity:0;transition:all 0.5s ease 0.3s;}
+.envelope.open .envelope-heart{opacity:1;transform:translate(-50%,-100%);}
+</style>
+</head>
+<body>
+
+<div class="hearts-container" id="heartsContainer"></div>
+<div class="fireworks-container" id="fireworksContainer"></div>
+
+<div class="slider-container">
+  <div class="slides-wrapper" id="slidesWrapper">
+
+    <!-- Slide 1 -->
+    <div class="slide">
+      <div class="glass-card">
+        <h1 class="slide-title">Something special for Kannaya ❤️</h1>
+        <img src="https://i.pinimg.com/originals/bb/b7/cc/bbb7ccef308fe3d6c3f2150beda9baf2.jpg" class="tom-jerry-img">
+
+        <div class="countdown-container">
+          <div class="time-box"><div class="time-value" id="days">00</div><div class="time-label">Days</div></div>
+          <div class="time-box"><div class="time-value" id="hours">00</div><div class="time-label">Hours</div></div>
+          <div class="time-box"><div class="time-value" id="minutes">00</div><div class="time-label">Mins</div></div>
+          <div class="time-box"><div class="time-value" id="seconds">00</div><div class="time-label">Secs</div></div>
+        </div>
+
+        <div class="envelope-container" onclick="openEnvelope()">
+          <div class="envelope" id="envelope">
+            <span class="envelope-heart">💖</span>
+          </div>
+        </div>
+        <p>Tap the envelope to unlock your story ✨</p>
+
+        <button class="nav-btn" id="btn1" onclick="goToSlide(1)" disabled>Locked 🔒</button>
+      </div>
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="slide">
+      <div class="glass-card">
+        <h1 class="slide-title">✨ My Wish ✨</h1>
+        <img src="https://m.media-amazon.com/images/I/71tSX+WfWxL.jpg" class="tom-jerry-img">
+        <p class="card-text">
+May this year bring you peace,
+happiness, calm mornings,
+and nights filled with hope ❤️
+        </p>
+        <button class="nav-btn" id="btn2" onclick="goToSlide(2)" disabled>Next 💌</button>
+      </div>
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="slide">
+      <div class="glass-card">
+        <h1 class="slide-title">💌 Love Letter</h1>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJzxsOnZsNmZTRqbKXzI670rOgtOrvswjKVw&s" class="tom-jerry-img">
+        <p class="card-text letter-text">
+My Dearest,
+
+Like Tom & Jerry, we tease, we chase, we fight a little, but we always find our way back to love 💖
+
+Every smile, every silence, every laugh we share, you remain my comfort and my strength 🤍
+
+Ordinary moments with you feel magical and unforgettable.
+You are my favorite thought each day ✨
+
+No matter what the future brings, my heart will always choose you ❤️
+        </p>
+        <button class="nav-btn" id="btn3" onclick="goToSlide(3)" disabled>Next 🤍</button>
+      </div>
+    </div>
+
+    <!-- Slide 4 -->
+    <div class="slide">
+      <div class="glass-card">
+        <h1 class="slide-title">🤍 My Promise</h1>
+        <img src="https://i.pinimg.com/236x/a6/fb/08/a6fb08f7acdb1a124ae63262e0666e0d.jpg" class="tom-jerry-img">
+        <p class="card-text">
+This year and every year after,
+I promise patience, understanding,
+and a heart that chooses you—always ❤️
+        </p>
+        <button class="nav-btn" id="btn4" onclick="goToSlide(4)" disabled>Next 🎆</button>
+      </div>
+    </div>
+
+    <!-- Slide 5 -->
+    <div class="slide">
+      <div class="glass-card">
+        <h1 class="big-title">🎆 Happy New Year! 🎆</h1>
+        <img src="https://variety.com/wp-content/uploads/2023/07/Tom-and-Jerry-Singapore-series-poster.jpg?w=1000&h=563&crop=1" class="tom-jerry-img">
+        <p class="card-text">
+Wishing you a year full of joy, laughter,
+and all the love your heart can hold ❤️
+
+Cheers to our beautiful moments together!
+        </p>
+        <button class="nav-btn" id="btn5" onclick="goToSlide(0)">Relive Our Story ♾️</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+let currentSlide=0;
+let isCountdownOver=false;
+let isUnlocked=false;
+
+// Countdown to Dec 31 23:59:59 of current year
+const now = new Date();
+const currentYear = now.getFullYear();
+const countdownTarget = new Date(currentYear,11,31,23,59,59).getTime();
+
+function updateCountdown(){
+    const now = new Date().getTime();
+    const diff = countdownTarget - now;
+    if(diff <= 0){
+        document.getElementById('days').textContent='00';
+        document.getElementById('hours').textContent='00';
+        document.getElementById('minutes').textContent='00';
+        document.getElementById('seconds').textContent='00';
+        isCountdownOver=true;
+        return;
+    }
+    const days=Math.floor(diff/(1000*60*60*24));
+    const hours=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+    const minutes=Math.floor((diff%(1000*60*60))/(1000*60));
+    const seconds=Math.floor((diff%(1000*60))/1000);
+    document.getElementById('days').textContent=String(days).padStart(2,'0');
+    document.getElementById('hours').textContent=String(hours).padStart(2,'0');
+    document.getElementById('minutes').textContent=String(minutes).padStart(2,'0');
+    document.getElementById('seconds').textContent=String(seconds).padStart(2,'0');
+}
+
+function unlockSlides(){
+    if(!isCountdownOver || isUnlocked) return;
+    isUnlocked=true;
+    ['btn1','btn2','btn3','btn4','btn5'].forEach(id=>{
+        const btn=document.getElementById(id);
+        if(btn) btn.disabled=false;
+    });
+    createFloatingHearts();
+}
+
+function goToSlide(index){
+    currentSlide=index;
+    document.getElementById('slidesWrapper').style.transform=`translateX(-${index*20}%)`;
+    if(index===4){launchFireworks();}
+}
+
+function openEnvelope(){
+    if(!isCountdownOver) return;
+    const envelope=document.getElementById('envelope');
+    envelope.classList.add('open');
+    unlockSlides();
+}
+
+function createFloatingHearts(){
+    const container=document.getElementById('heartsContainer');
+    const hearts=['❤️','💖','💕','💗','💓','🤍','💘'];
+    for(let i=0;i<20;i++){
+        setTimeout(()=>{
+            const heart=document.createElement('span');
+            heart.className='floating-heart';
+            heart.textContent=hearts[Math.floor(Math.random()*hearts.length)];
+            heart.style.left=Math.random()*100+'%';
+            heart.style.fontSize=(Math.random()*1.5+1)+'rem';
+            heart.style.animationDuration=(Math.random()*2+3)+'s';
+            container.appendChild(heart);
+            setTimeout(()=>heart.remove(),5000);
+        },i*100);
+    }
+}
+
+function launchFireworks(){
+    const container=document.getElementById('fireworksContainer');
+    const colors=['#ff5a7e','#ffb5a7','#ffd700','#ff69b4','#00ff7f','#87ceeb','#ff6347'];
+    for(let fw=0;fw<15;fw++){
+        setTimeout(()=>{createFirework(container,colors);},fw*400);
+    }
+}
+
+function createFirework(container,colors){
+    const x=Math.random()*window.innerWidth;
+    const y=Math.random()*window.innerHeight*0.6+50;
+    const color=colors[Math.floor(Math.random()*colors.length)];
+    const sparkCount=12;
+    const radius=100;
+    for(let i=0;i<sparkCount;i++){
+        const spark=document.createElement('div');
+        spark.className='spark';
+        spark.style.left=x+'px';
+        spark.style.top=y+'px';
+        spark.style.backgroundColor=color;
+        spark.style.boxShadow=`0 0 6px ${color}`;
+        const angle=(i/sparkCount)*2*Math.PI;
+        const endX=Math.cos(angle)*radius;
+        const endY=Math.sin(angle)*radius;
+        spark.style.setProperty('--spark-end',`translate(${endX}px,${endY}px)`);
+        container.appendChild(spark);
+        setTimeout(()=>spark.remove(),1500);
+    }
+}
+
+setInterval(updateCountdown,1000);
+updateCountdown();
+</script>
+
+</body>
+</html>
