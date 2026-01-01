@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Something Special for Kannaya ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{
+  font-family:'Georgia','Times New Roman',serif;
+  height:100vh;
+  overflow:hidden;
+  background:linear-gradient(-45deg,#ffd6e0,#ffb5a7,#f9c5d1,#ffe5ec);
+  background-size:400% 400%;
+  animation:gradientShift 15s ease infinite;
+}
+@keyframes gradientShift{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+.slider-container{width:100%;height:100vh;overflow:hidden;}
+.slides-wrapper{
+  display:flex;
+  width:500%;
+  height:100%;
+  transition:transform 0.8s ease;
+}
+.slide{
+  width:20%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.glass-card{
+  background:rgba(255,255,255,0.25);
+  backdrop-filter:blur(20px);
+  border-radius:24px;
+  border:1px solid rgba(255,255,255,0.4);
+  padding:30px;
+  max-width:440px;
+  width:90%;
+  text-align:center;
+  box-shadow:0 8px 32px rgba(255,90,126,0.2);
+}
+
+.slide-title{font-size:2rem;color:#ff5a7e;margin-bottom:20px;}
+.card-text{font-size:1.05rem;color:#4a3040;line-height:1.8;white-space:pre-line;}
+.letter-text{text-align:left;font-style:italic;}
+
+.nav-btn{
+  margin-top:25px;
+  padding:15px 35px;
+  font-size:1.1rem;
+  border:none;
+  border-radius:50px;
+  background:linear-gradient(135deg,#ff85a2,#ff5a7e);
+  color:#fff;
+  cursor:pointer;
+}
+.nav-btn:disabled{opacity:0.6;cursor:not-allowed;}
+
+.tom-jerry-img{
+  width:150px;height:150px;border-radius:50%;
+  object-fit:cover;margin-bottom:20px;border:4px solid #fff;
+}
+
+.hearts-container,.fireworks-container{
+  position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;
+}
+
+.floating-heart{
+  position:absolute;font-size:1.5rem;
+  animation:floatUp 4s ease-out forwards;
+}
+@keyframes floatUp{
+  from{transform:translateY(100vh);opacity:1;}
+  to{transform:translateY(-100px);opacity:0;}
+}
+
+.spark{
+  position:absolute;width:4px;height:4px;border-radius:50%;
+  animation:sparkle 1.5s ease-out forwards;
+}
+@keyframes sparkle{to{transform:var(--spark-end);opacity:0;}}
+
+.big-title{font-size:3rem;color:#ff5a7e;}
+
+.envelope-container{width:120px;height:80px;margin:20px auto;cursor:pointer;}
+.envelope{
+  width:100%;height:100%;background:#ffd6e0;
+  position:relative;border-radius:6px;
+}
+.envelope::before{
+  content:'';
+  position:absolute;
+  border-left:60px solid transparent;
+  border-right:60px solid transparent;
+  border-top:45px solid #ff85a2;
+  top:0;left:0;right:0;
+  transition:0.5s;
+}
+.envelope.open::before{transform:rotateX(180deg);}
+.envelope-heart{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-size:2rem;opacity:0;
+}
+.envelope.open .envelope-heart{opacity:1;}
+</style>
+</head>
+
+<body>
+
+<div class="hearts-container" id="heartsContainer"></div>
+<div class="fireworks-container" id="fireworksContainer"></div>
+
+<div class="slider-container">
+<div class="slides-wrapper" id="slidesWrapper">
+
+<!-- SLIDE 1 -->
+<div class="slide">
+<div class="glass-card">
+<h1 class="slide-title">Something special for Kannaya ❤️</h1>
+<img class="tom-jerry-img" src="https://i.pinimg.com/originals/bb/b7/cc/bbb7ccef308fe3d6c3f2150beda9baf2.jpg">
+
+<div class="envelope-container" onclick="openEnvelope()">
+  <div class="envelope" id="envelope">
+    <span class="envelope-heart">💖</span>
+  </div>
+</div>
+
+<p>🎁 Surprise unlocks in 20 seconds 🎁</p>
+
+<button class="nav-btn" id="btn1" onclick="goToSlide(1)" disabled>
+Start the Story 💖
+</button>
+</div>
+</div>
+
+<!-- SLIDE 2 -->
+<div class="slide">
+<div class="glass-card">
+<h1 class="slide-title">✨ My Wish ✨</h1>
+<img class="tom-jerry-img" src="https://m.media-amazon.com/images/I/71tSX+WfWxL.jpg">
+<p class="card-text">
+May this year bring you calm mornings, peaceful nights,
+gentle smiles, and a heart full of happiness ❤️
+</p>
+<button class="nav-btn" id="btn2" onclick="goToSlide(2)" disabled>Next 💌</button>
+</div>
+</div>
+
+<!-- SLIDE 3 (LONG LETTER) -->
+<div class="slide">
+<div class="glass-card">
+<h1 class="slide-title">💌 Love Letter</h1>
+<img class="tom-jerry-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRJzxsOnZsNmZTRqbKXzI670rOgtOrvswjKVw&s">
+
+<p class="card-text letter-text">
+My Dearest Kannaya,
+
+Sometimes I don’t even realize how deeply you’ve become a part of my everyday life.
+In the quiet moments, in the chaos, and in the pauses between words — it’s always you.
+Like Tom and Jerry, we tease, we misunderstand, and we fight a little, but somehow
+our hearts always find their way back to each other.
+
+You are my comfort on heavy days, my calm when my thoughts feel restless,
+and my safe place when the world feels overwhelming.
+With you, even ordinary moments feel special — a simple conversation,
+a shared silence, a laugh that stays longer than expected.
+
+You remind me that love isn’t about perfection,
+but about patience, understanding, and choosing each other again and again.
+No matter what the future brings, no matter where life takes us,
+know this — my heart feels at home with you,
+and it will always choose you… today, tomorrow, and every day after 🤍
+</p>
+
+<button class="nav-btn" id="btn3" onclick="goToSlide(3)" disabled>Next 🤍</button>
+</div>
+</div>
+
+<!-- SLIDE 4 -->
+<div class="slide">
+<div class="glass-card">
+<h1 class="slide-title">🤍 My Promise</h1>
+<img class="tom-jerry-img" src="https://i.pinimg.com/236x/a6/fb/08/a6fb08f7acdb1a124ae63262e0666e0d.jpg">
+<p class="card-text">
+This year and every year after,
+I promise patience, understanding,
+and a heart that always chooses you ❤️
+</p>
+<button class="nav-btn" id="btn4" onclick="goToSlide(4)" disabled>Next 🎆</button>
+</div>
+</div>
+
+<!-- SLIDE 5 -->
+<div class="slide">
+<div class="glass-card">
+<h1 class="big-title">🎆 Happy New Year 🎆</h1>
+<img class="tom-jerry-img" src="https://variety.com/wp-content/uploads/2023/07/Tom-and-Jerry-Singapore-series-poster.jpg">
+<p class="card-text">
+Wishing us a year full of love, laughter,
+and beautiful memories together ❤️
+</p>
+<button class="nav-btn" onclick="goToSlide(0)">Replay ♾️</button>
+</div>
+</div>
+
+</div>
+</div>
+
+<script>
+let unlocked = false;
+
+// ⏱️ 20-second surprise
+setTimeout(() => {
+  unlockAll();
+  document.getElementById("envelope").classList.add("open");
+  goToSlide(1);
+}, 20000);
+
+function unlockAll(){
+  if(unlocked) return;
+  unlocked = true;
+
+  ['btn1','btn2','btn3','btn4'].forEach(id=>{
+    const btn = document.getElementById(id);
+    if(btn) btn.disabled = false;
+  });
+
+  createHearts();
+}
+
+function openEnvelope(){
+  unlockAll();
+  document.getElementById("envelope").classList.add("open");
+}
+
+function goToSlide(index){
+  document.getElementById("slidesWrapper")
+    .style.transform = `translateX(-${index * 20}%)`;
+
+  if(index === 4) fireworks();
+}
+
+function createHearts(){
+  const c = document.getElementById("heartsContainer");
+  for(let i=0;i<20;i++){
+    const h=document.createElement("span");
+    h.className="floating-heart";
+    h.innerText="💖";
+    h.style.left=Math.random()*100+"%";
+    c.appendChild(h);
+    setTimeout(()=>h.remove(),4000);
+  }
+}
+
+function fireworks(){
+  const c=document.getElementById("fireworksContainer");
+  for(let i=0;i<15;i++){
+    const s=document.createElement("div");
+    s.className="spark";
+    s.style.left=Math.random()*window.innerWidth+"px";
+    s.style.top=Math.random()*window.innerHeight+"px";
+    s.style.background="hotpink";
+    s.style.setProperty("--spark-end",
+      `translate(${Math.random()*200-100}px,${Math.random()*200-100}px)`);
+    c.appendChild(s);
+    setTimeout(()=>s.remove(),1500);
+  }
+}
+</script>
+
+</body>
+</html>
